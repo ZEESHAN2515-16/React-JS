@@ -44,6 +44,7 @@
    text-transform: uppercase;
    letter-spacing: 1px;
    color: black;
+   font-weight: 500;
 }
 .see-more {
    background: rgba(255, 255, 255, 0.3);
@@ -115,5 +116,4 @@
    margin-top: 0;
    font-weight: 100;
    font-size: 1.5rem;
-   text-transform: uppercase;
 }

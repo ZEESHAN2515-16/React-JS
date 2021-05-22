@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import NavBar from './Navbar';
 import './Palette.css';
 class Palette extends Component {
    constructor(props) {
@@ -9,22 +8,24 @@ class Palette extends Component {
 
       this.state = {
          level: 400,
+         format: 'hex',
       };
    }
-   handleSlider = (level) => {
+   changeLevel = (level) => {
       this.setState({ level });
+   };
+   changeFormat = (val) => {
+      this.setState({ format: val });
    };
 
    render() {
       const { colors } = this.props.palette;
-      const { level } = this.state;
-      const colorBoxes = colors[level].map((color) => <ColorBox background={color.hex} name={color.name} />);
+      const { level, format } = this.state;
+      const colorBoxes = colors[level].map((color) => <ColorBox background={color[format]} name={color.name} />);
       return (
          <div className='Palette'>
-            <div className='slider'>
-               <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.handleSlider} />
-            </div>
             {/* navber goes here */}
+            <NavBar level={level} changeLevel={this.changeLevel} handleChange={this.changeFormat} />
             <div className='Palette-colors'>{colorBoxes}</div>
             {/* footer goes here */}
             {/* Something also goes here */}
