@@ -3,6 +3,7 @@ import Palette from './Palette';
 import seedColors from './seedColors';
 import './App.css';
 import { generatePalette } from './ColorHelpers.js';
+import PaletteList from './PaletteList';
 function App() {
    // console.log(seedColors);
    const findPalette = (id) => {
@@ -10,11 +11,10 @@ function App() {
          return palette.id === id;
       });
    };
-   console.log(findPalette('material-ui-colors'));
    return (
       <div className='App'>
          <Switch>
-            <Route exact path='/' render={() => <h1>Palette List Goes Here </h1>} />
+            <Route exact path='/' render={() => <PaletteList paletteList={seedColors} />} />
             <Route
                exact
                path='/palette/:id'
