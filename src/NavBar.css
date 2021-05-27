@@ -27,7 +27,7 @@
 .slider {
    width: 280px;
    display: inline-block;
-   margin: 0 10px;
+   margin: 0 15px;
 }
 .rc-slider-track {
    background-color: transparent;
@@ -45,7 +45,6 @@
    box-shadow: none;
    width: 13px;
    height: 13px;
-   margin-left: -7px;
    margin-top: -3px;
 }
 .select-container {

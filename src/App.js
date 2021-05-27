@@ -4,6 +4,7 @@ import seedColors from './seedColors';
 import './App.css';
 import { generatePalette } from './ColorHelpers.js';
 import PaletteList from './PaletteList';
+import SingleColorPalette from './SingleColorPalette';
 function App() {
    // console.log(seedColors);
    const findPalette = (id) => {
@@ -14,11 +15,21 @@ function App() {
    return (
       <div className='App'>
          <Switch>
-            <Route exact path='/' render={() => <PaletteList paletteList={seedColors} />} />
+            <Route exact path='/' render={(routeProps) => <PaletteList paletteList={seedColors} {...routeProps} />} />
             <Route
                exact
                path='/palette/:id'
                render={(routeProps) => <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} />}
+            />
+            <Route
+               exact
+               path='/palette/:paletteId/:colorId'
+               render={(routeProps) => (
+                  <SingleColorPalette
+                     colorid={routeProps.match.params.colorId}
+                     palette={generatePalette(findPalette(routeProps.match.params.paletteId))}
+                  />
+               )}
             />
          </Switch>
          {/* <Palette palette={generatePalette(seedColors[0])} /> */}
