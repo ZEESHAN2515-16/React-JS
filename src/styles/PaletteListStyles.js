@@ -4,9 +4,12 @@ export default {
    root: {
       backgroundColor: 'blue',
       height: '100vh',
+      width: '100%',
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'center',
+      position: 'fixed',
+      overflow: 'auto',
    },
    container: {
       width: '50%',
@@ -18,8 +21,15 @@ export default {
    nav: {
       display: 'flex',
       width: '100%',
-      justifyContent: 'space-betweeen',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexDirection: 'row',
       color: 'white',
+      '& a': {
+         color: 'white',
+         textDecoration: 'underline',
+         marginRight: '5px',
+      },
    },
    palettes: {
       boxSizing: 'border-box',
