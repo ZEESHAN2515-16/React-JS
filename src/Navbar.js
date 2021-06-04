@@ -44,22 +44,23 @@ const styles = {
       width: '280px',
       display: 'inline-block',
       margin: '0 15px',
-      '& rc-slider-track': {
+      '& .rc-slider-track': {
          backgroundColor: 'transparent',
       },
       '& .rc-slider-rail': {
          height: '6px',
       },
 
-      '& rc-slider-handle, .rc-slider-handle:focus, .rc-slider-handle:active, .rc-slider-handle:hover': {
-         backgroundColor: 'green',
-         outline: 'none',
-         border: '2px solid green',
-         boxShadow: 'none',
-         width: '13px',
-         height: '13px',
-         marginTop: '-3px',
-      },
+      '& .rc-slider-handle, .rc-slider-handle:focus, .rc-slider-handle:active, .rc-slider-handle:hover':
+         {
+            backgroundColor: 'green',
+            outline: 'none',
+            border: '2px solid green',
+            boxShadow: 'none',
+            width: '13px',
+            height: '13px',
+            marginTop: '-3px',
+         },
    },
 
    selectContainer: {
@@ -98,13 +99,21 @@ class Navbar extends Component {
                <div className={classes.sliderContainer}>
                   <span>Level : {level}</span>
                   <div className={classes.slider}>
-                     <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={changeLevel} />
+                     <Slider
+                        defaultValue={level}
+                        min={100}
+                        max={900}
+                        step={100}
+                        onAfterChange={changeLevel}
+                     />
                   </div>
                </div>
             )}
 
             <div className={classes.selectContainer}>
-               <Select value={this.state.format} onChange={this.handleFormatChange}>
+               <Select
+                  value={this.state.format}
+                  onChange={this.handleFormatChange}>
                   <MenuItem value='hex'>HEX - #fffffff</MenuItem>
                   <MenuItem value='rgb'>RGB - rgb(255,255,255)</MenuItem>
                   <MenuItem value='rgba'>RGBA - rgb(255,255,255,0.1)</MenuItem>
@@ -114,11 +123,19 @@ class Navbar extends Component {
                anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                open={this.state.open}
                autoHideDuration={2000}
-               message={<span id='message-id'>Format Changed To {this.state.format.toUpperCase()}</span>}
+               message={
+                  <span id='message-id'>
+                     Format Changed To {this.state.format.toUpperCase()}
+                  </span>
+               }
                ContentProps={{ 'aria-describedby': 'message-id' }}
                onClose={this.closeSnackBar}
                action={[
-                  <IconButton onClick={this.closeSnackBar} color='inherit' key='close' aria-label='close'>
+                  <IconButton
+                     onClick={this.closeSnackBar}
+                     color='inherit'
+                     key='close'
+                     aria-label='close'>
                      <CloseIcon />
                   </IconButton>,
                ]}

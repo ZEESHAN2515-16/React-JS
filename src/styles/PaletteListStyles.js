@@ -2,7 +2,7 @@
 
 export default {
    root: {
-      backgroundColor: 'blue',
+      backgroundColor: 'black',
       height: '100vh',
       width: '100%',
       display: 'flex',

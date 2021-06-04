@@ -20,16 +20,35 @@ function App() {
    return (
       <div className='App'>
          <Switch>
-            <Route exact path='/' render={(routeProps) => <PaletteList paletteList={newPal} {...routeProps} />} />
             <Route
                exact
-               path='/palette/new'
-               render={(routeProps) => <NewPaletteForm savePalette={savePalette} {...routeProps} palettes={newPal} />}
+               path='/'
+               render={(routeProps) => (
+                  <PaletteList paletteList={newPal} {...routeProps} />
+               )}
             />
             <Route
                exact
+               path='/palette/new'
+               render={(routeProps) => (
+                  <NewPaletteForm
+                     savePalette={savePalette}
+                     {...routeProps}
+                     palettes={newPal}
+                  />
+               )}
+            />
+
+            <Route
+               exact
                path='/palette/:id'
-               render={(routeProps) => <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} />}
+               render={(routeProps) => (
+                  <Palette
+                     palette={generatePalette(
+                        findPalette(routeProps.match.params.id)
+                     )}
+                  />
+               )}
             />
             <Route
                exact
@@ -37,7 +56,9 @@ function App() {
                render={(routeProps) => (
                   <SingleColorPalette
                      colorid={routeProps.match.params.colorId}
-                     palette={generatePalette(findPalette(routeProps.match.params.paletteId))}
+                     palette={generatePalette(
+                        findPalette(routeProps.match.params.paletteId)
+                     )}
                   />
                )}
             />

@@ -10,7 +10,7 @@ export default {
       margin: '0 auto',
       position: 'relative',
       cursor: 'pointer',
-      marginBottom: '-3.6px',
+      marginBottom: '-3.99px',
       '&:hover button': {
          opacity: '1',
          transition: '0.5s',
@@ -30,15 +30,20 @@ export default {
       fontWeight: '500',
    },
    copyText: {
-      color: (props) => (chroma(props.background).luminance() >= 0.5 ? 'black' : 'white'),
+      color: (props) =>
+         chroma(props.background).luminance() >= 0.5 ? 'black' : 'white',
    },
    colorName: {
-      color: (props) => (chroma(props.background).luminance() <= 0.08 ? 'white' : 'black'),
+      color: (props) =>
+         chroma(props.background).luminance() <= 0.08 ? 'white' : 'black',
    },
    seeMore: {
-      color: (props) => (chroma(props.background).luminance() >= 0.5 ? 'black' : 'white'),
+      color: (props) =>
+         chroma(props.background).luminance() >= 0.5 ? 'black' : 'white',
       backgroundColor: (props) =>
-         chroma(props.background).luminance() >= 0.5 ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.3)',
+         chroma(props.background).luminance() >= 0.5
+            ? 'rgba(0, 0, 0, 0.1)'
+            : 'rgba(255, 255, 255, 0.3)',
       position: 'absolute',
       bottom: '0',
       right: '0',
@@ -51,9 +56,14 @@ export default {
    },
    copyButton: {
       backgroundColor: (props) =>
-         chroma(props.background).luminance() >= 0.5 ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.3)',
+         chroma(props.background).luminance() >= 0.5
+            ? 'rgba(0, 0, 0, 0.1)'
+            : 'rgba(255, 255, 255, 0.3)',
       // background: 'rgba(255, 255, 255, 0.3)',
-      color: (props) => (chroma(props.background).luminance() >= 0.5 ? 'rgba(0, 0, 0, 0.7)' : 'white'),
+      color: (props) =>
+         chroma(props.background).luminance() >= 0.5
+            ? 'rgba(0, 0, 0, 0.7)'
+            : 'white',
       width: '100px',
       height: '30px',
       position: 'absolute',
@@ -109,7 +119,10 @@ export default {
       '& h1': {
          width: '100%',
          textAlign: 'center',
-         background: (props) => (chroma(props.background).luminance() >= 0.5 ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.3)'),
+         background: (props) =>
+            chroma(props.background).luminance() >= 0.5
+               ? 'rgba(0, 0, 0, 0.1)'
+               : 'rgba(255, 255, 255, 0.3)',
          // background: 'rgba(255, 255, 255, 0.3)',
          verticalAlign: 'middle',
          marginBottom: '0',
