@@ -1,4 +1,4 @@
-const drawerWidth = 350;
+import DRAWER_WIDTH from './constants';
 
 export default {
    root: {
@@ -22,8 +22,8 @@ export default {
    //    }),
    // },
    appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+      width: `calc(100% - ${DRAWER_WIDTH}px)`,
+      marginLeft: DRAWER_WIDTH,
       // transition: theme.transitions.create(['margin', 'width'], {
       //    easing: theme.transitions.easing.easeOut,
       //    duration: theme.transitions.duration.enteringScreen,
@@ -32,15 +32,13 @@ export default {
    // menuButton: {
    //    marginRight: theme.spacing(2),
    // },
-   hide: {
-      display: 'none',
-   },
+
    drawer: {
-      width: drawerWidth,
+      width: DRAWER_WIDTH,
       flexShrink: 0,
    },
    drawerPaper: {
-      width: drawerWidth,
+      width: DRAWER_WIDTH,
    },
    drawerHeader: {
       display: 'flex',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Palette from './Palette';
 import seedColors from './seedColors';
@@ -8,47 +8,37 @@ import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
 function App() {
-   const [newPal, saveNewPals] = useState(seedColors);
+   const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
+   const [palettes, saveNewPals] = useState(savedPalettes || seedColors);
+
+   useEffect(() => {
+      window.localStorage.setItem('palettes', JSON.stringify(palettes));
+   }, [palettes]);
+
+   const savePalette = (newPalette) => {
+      saveNewPals([...palettes, newPalette]);
+   };
+
    const findPalette = (id) => {
-      return newPal.find((palette) => {
+      return palettes.find((palette) => {
          return palette.id === id;
       });
    };
-   const savePalette = (newPalette) => {
-      saveNewPals([...newPal, newPalette]);
-   };
+
    return (
       <div className='App'>
          <Switch>
-            <Route
-               exact
-               path='/'
-               render={(routeProps) => (
-                  <PaletteList paletteList={newPal} {...routeProps} />
-               )}
-            />
+            <Route exact path='/' render={(routeProps) => <PaletteList paletteList={palettes} {...routeProps} />} />
             <Route
                exact
                path='/palette/new'
-               render={(routeProps) => (
-                  <NewPaletteForm
-                     savePalette={savePalette}
-                     {...routeProps}
-                     palettes={newPal}
-                  />
-               )}
+               render={(routeProps) => <NewPaletteForm savePalette={savePalette} {...routeProps} palettes={palettes} />}
             />
 
             <Route
                exact
                path='/palette/:id'
-               render={(routeProps) => (
-                  <Palette
-                     palette={generatePalette(
-                        findPalette(routeProps.match.params.id)
-                     )}
-                  />
-               )}
+               render={(routeProps) => <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} />}
             />
             <Route
                exact
@@ -56,9 +46,7 @@ function App() {
                render={(routeProps) => (
                   <SingleColorPalette
                      colorid={routeProps.match.params.colorId}
-                     palette={generatePalette(
-                        findPalette(routeProps.match.params.paletteId)
-                     )}
+                     palette={generatePalette(findPalette(routeProps.match.params.paletteId))}
                   />
                )}
             />
