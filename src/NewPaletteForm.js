@@ -81,9 +81,7 @@ function NewPaletteForm(props) {
                paper: classes.drawerPaper,
             }}>
             <div className={classes.drawerHeader}>
-               <IconButton onClick={handleDrawerClose}>
-                  {<ChevronLeftIcon />}
-               </IconButton>
+               <IconButton onClick={handleDrawerClose}>{<ChevronLeftIcon />}</IconButton>
             </div>
             <Divider />
             <div className={classes.drawerContainer}>
@@ -111,11 +109,7 @@ function NewPaletteForm(props) {
                      Random Color
                   </Button>
                </div>
-               <ColorPickerForm
-                  paletteFull={paletteFull}
-                  addNewColor={addColor}
-                  colors={colors}
-               />
+               <ColorPickerForm paletteFull={paletteFull} addNewColor={addColor} colors={colors} />
             </div>
          </Drawer>
          <main
@@ -123,13 +117,7 @@ function NewPaletteForm(props) {
                [classes.contentShift]: open,
             })}>
             <div className={classes.drawerHeader} />
-            <DragableColorList
-               colors={colors}
-               handleDelete={handleDelete}
-               axis='xy'
-               onSortEnd={onSortEnd}
-               nodeRef={nodeRef}
-            />
+            <DragableColorList colors={colors} handleDelete={handleDelete} axis='xy' onSortEnd={onSortEnd} nodeRef={nodeRef} />
          </main>
       </div>
    );

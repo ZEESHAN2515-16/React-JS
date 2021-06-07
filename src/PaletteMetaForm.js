@@ -33,11 +33,7 @@ function PaletteMetaForm(props) {
       ValidatorForm.addValidationRule('isPaletteNameUnique', () => {
          let isUnique = true;
          palettes.forEach((palette) => {
-            if (
-               palette.paletteName.toLowerCase() ===
-               newPaletteName.toLowerCase()
-            )
-               isUnique = false;
+            if (palette.paletteName.toLowerCase() === newPaletteName.toLowerCase()) isUnique = false;
          });
          return isUnique;
       });
@@ -63,16 +59,9 @@ function PaletteMetaForm(props) {
                   🙂
                </span>
             </DialogTitle>
-            <Picker
-               onSelect={selectEmoji}
-               title='Pick your emoji…'
-               emoji='point_up'
-            />
+            <Picker onSelect={selectEmoji} title='Pick your emoji…' emoji='point_up' />
          </Dialog>
-         <Dialog
-            open={stage === 'palette'}
-            onClose={toggleShow}
-            aria-labelledby='form-dialog-title'>
+         <Dialog open={stage === 'palette'} onClose={toggleShow} aria-labelledby='form-dialog-title'>
             <DialogTitle id='form-dialog-title' className={classes.title}>
                Choose a Palette Name{' '}
                <span role='img' aria-label='palette emoji'>
@@ -82,20 +71,14 @@ function PaletteMetaForm(props) {
 
             <ValidatorForm onSubmit={showEmojiPicker}>
                <DialogContent>
-                  <DialogContentText>
-                     Please enter a name for your palette. Make sure it's
-                     unique!
-                  </DialogContentText>
+                  <DialogContentText>Please enter a name for your palette. Make sure it's unique!</DialogContentText>
 
                   <TextValidator
                      value={newPaletteName}
                      placeholder='Palette Name'
                      onChange={handleNewPaletteName}
                      validators={['required', 'isPaletteNameUnique']}
-                     errorMessages={[
-                        'Palette Name is required',
-                        'Palette name must be Unique',
-                     ]}
+                     errorMessages={['Palette Name is required', 'Palette name must be Unique']}
                      fullWidth
                      margin='normal'
                   />

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { DRAWER_WIDTH } from './Constants';
+=======
+import DRAWER_WIDTH from './constants';
+>>>>>>> 1490295c39874ea60924c370f84298fbfe05e850
 
 export default {
    root: {
@@ -32,15 +36,13 @@ export default {
    // menuButton: {
    //    marginRight: theme.spacing(2),
    // },
-   hide: {
-      display: 'none',
-   },
+
    drawer: {
-      width: drawerWidth,
+      width: DRAWER_WIDTH,
       flexShrink: 0,
    },
    drawerPaper: {
-      width: drawerWidth,
+      width: DRAWER_WIDTH,
    },
    drawerHeader: {
       display: 'flex',

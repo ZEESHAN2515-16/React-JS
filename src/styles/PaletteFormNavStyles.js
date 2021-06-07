@@ -1,5 +1,9 @@
 import { makeStyles } from '@material-ui/core';
+<<<<<<< HEAD
 import { DRAWER_WIDTH } from './Constants';
+=======
+import { DRAWER_WIDTH } from './constants';
+>>>>>>> 1490295c39874ea60924c370f84298fbfe05e850
 
 const styles = makeStyles((theme) => ({
    root: {

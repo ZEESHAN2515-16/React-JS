@@ -1,5 +1,9 @@
+import { DRAWER_WIDTH } from './constants';
 import { makeStyles } from '@material-ui/core/styles';
+<<<<<<< HEAD
 import { DRAWER_WIDTH } from './Constants';
+=======
+>>>>>>> 1490295c39874ea60924c370f84298fbfe05e850
 
 const styles = makeStyles((theme) => ({
    root: {
@@ -24,14 +28,22 @@ const styles = makeStyles((theme) => ({
       width: '100%',
       display: 'flex',
       alignItems: 'center',
+<<<<<<< HEAD
       // padding: theme.spacing(0, 1),
+=======
+      padding: 0,
+>>>>>>> 1490295c39874ea60924c370f84298fbfe05e850
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
    },
    content: {
       flexGrow: 1,
+<<<<<<< HEAD
       // height: 'calc(100vh - 10px)',
       height: '100vh',
+=======
+      height: 'calc(100vh - 10px)',
+>>>>>>> 1490295c39874ea60924c370f84298fbfe05e850
       padding: 0,
       transition: theme.transitions.create('margin', {
          easing: theme.transitions.easing.sharp,
