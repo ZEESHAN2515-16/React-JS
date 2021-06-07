@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Typography from '@material-ui/core/Typography';
-import MenuIcon from '@material-ui/icons/Menu';
+import AddIcon from '@material-ui/icons/LibraryAdd';
 import Button from '@material-ui/core/Button';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import PaletteMetaForm from './PaletteMetaForm';
@@ -35,7 +35,7 @@ function PaletteFormnav(props) {
                   onClick={handleDrawer}
                   edge='start'
                   className={clsx(classes.menuButton, open && classes.hide)}>
-                  <MenuIcon />
+                  <AddIcon />
                </IconButton>
             </Toolbar>
             <div className={classes.headerBtn}>

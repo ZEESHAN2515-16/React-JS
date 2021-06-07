@@ -1,4 +1,4 @@
-const drawerWidth = 350;
+import { DRAWER_WIDTH } from './Constants';
 
 export default {
    root: {
@@ -22,8 +22,8 @@ export default {
    //    }),
    // },
    appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+      width: `calc(100% - ${DRAWER_WIDTH}px)`,
+      marginLeft: DRAWER_WIDTH,
       // transition: theme.transitions.create(['margin', 'width'], {
       //    easing: theme.transitions.easing.easeOut,
       //    duration: theme.transitions.duration.enteringScreen,
@@ -53,6 +53,7 @@ export default {
    content: {
       flexGrow: 1,
       height: 'calc(100vh - 10px)',
+      padding: '0',
       // padding: theme.spacing(3),
       // transition: theme.transitions.create('margin', {
       //    easing: theme.transitions.easing.sharp,
