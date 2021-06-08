@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { withStyles } from '@material-ui/styles';
-import styles from './styles/ColorPickerFormStyles';
+import styles from '../styles/ColorPickerFormStyles';
 
 function ColorPickerForm(props) {
    const { paletteFull, addNewColor, colors, classes } = props;

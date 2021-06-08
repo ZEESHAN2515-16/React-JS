@@ -1,4 +1,5 @@
-/* eslint-disable import/no-anonymous-default-export */
+// /* eslint-disable import/no-anonymous-default-export */
+import sizes from '../Components/sizes';
 
 export default {
    palette: {
@@ -7,7 +8,12 @@ export default {
       flexDirection: 'column',
    },
    paletteColors: {
-      height: '88%',
+      height: '89%',
+      [sizes.down('xs')]: {
+         overflowY: 'scroll',
+         overflowX: 'hidden',
+         height: '90%',
+      },
    },
    goBackContainer: {
       backgroundColor: 'black',
@@ -17,7 +23,19 @@ export default {
       display: 'inline-block',
       margin: '0 auto',
       position: ' relative',
-      marginBottom: '-3.6px',
+      marginBottom: '-3.99px',
+      [sizes.down('lg')]: {
+         height: '50.05%',
+         width: '20%',
+      },
+      [sizes.down('md')]: {
+         height: '20%',
+         width: '50%',
+      },
+      [sizes.down('xs')]: {
+         height: '10%',
+         width: '100%',
+      },
       '& a': {
          backgroundColor: 'rgba(255, 255, 255, 0.3)',
          color: 'white',

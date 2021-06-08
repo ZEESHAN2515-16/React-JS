@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Palette from './Palette';
+import Palette from './Components/Palette';
 import seedColors from './seedColors';
-import './App.css';
+import './styles/Page.css';
 import { generatePalette } from './ColorHelpers.js';
-import PaletteList from './PaletteList';
-import SingleColorPalette from './SingleColorPalette';
-import NewPaletteForm from './NewPaletteForm';
-function App() {
-   const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
-   const [palettes, saveNewPals] = useState(savedPalettes || seedColors);
+import PaletteList from './Components/PaletteList';
+import SingleColorPalette from './Components/SingleColorPalette';
+import NewPaletteForm from './Components/NewPaletteForm';
+import Page from './Components/Page';
 
+function App() {
+   // const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
+
+   let initializePalette;
+
+   try {
+      initializePalette = JSON.parse(window.localStorage.getItem('palettes'));
+      if (initializePalette === null || initializePalette.length === 0)
+         initializePalette = seedColors;
+   } catch (er) {
+      initializePalette = seedColors;
+   }
+
+   const [palettes, saveNewPals] = useState(initializePalette);
    useEffect(() => {
       window.localStorage.setItem('palettes', JSON.stringify(palettes));
    }, [palettes]);
@@ -25,34 +37,68 @@ function App() {
       });
    };
 
-   return (
-      <div className='App'>
-         <Switch>
-            <Route exact path='/' render={(routeProps) => <PaletteList paletteList={palettes} {...routeProps} />} />
-            <Route
-               exact
-               path='/palette/new'
-               render={(routeProps) => <NewPaletteForm savePalette={savePalette} {...routeProps} palettes={palettes} />}
-            />
+   const deletePalette = (paletteId) => {
+      let newPalette = palettes.filter((palette) => palette.id !== paletteId);
+      saveNewPals(newPalette);
+   };
 
-            <Route
-               exact
-               path='/palette/:id'
-               render={(routeProps) => <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} />}
-            />
-            <Route
-               exact
-               path='/palette/:paletteId/:colorId'
-               render={(routeProps) => (
+   return (
+      <Switch>
+         <Route
+            exact
+            path='/'
+            render={(routeProps) => (
+               <Page>
+                  <PaletteList
+                     paletteList={palettes}
+                     {...routeProps}
+                     handleDelete={deletePalette}
+                  />
+               </Page>
+            )}
+         />
+         <Route
+            exact
+            path='/palette/new'
+            render={(routeProps) => (
+               <Page>
+                  <NewPaletteForm
+                     savePalette={savePalette}
+                     {...routeProps}
+                     palettes={palettes}
+                  />
+               </Page>
+            )}
+         />
+
+         <Route
+            exact
+            path='/palette/:id'
+            render={(routeProps) => (
+               <Page>
+                  <Palette
+                     palette={generatePalette(
+                        findPalette(routeProps.match.params.id)
+                     )}
+                  />
+               </Page>
+            )}
+         />
+         <Route
+            exact
+            path='/palette/:paletteId/:colorId'
+            render={(routeProps) => (
+               <Page>
                   <SingleColorPalette
                      colorid={routeProps.match.params.colorId}
-                     palette={generatePalette(findPalette(routeProps.match.params.paletteId))}
+                     palette={generatePalette(
+                        findPalette(routeProps.match.params.paletteId)
+                     )}
                   />
-               )}
-            />
-         </Switch>
-         {/* <Palette palette={generatePalette(seedColors[0])} /> */}
-      </div>
+               </Page>
+            )}
+         />
+      </Switch>
    );
 }
 

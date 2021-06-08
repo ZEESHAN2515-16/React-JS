@@ -1,9 +1,7 @@
 import { makeStyles } from '@material-ui/core';
-<<<<<<< HEAD
-import { DRAWER_WIDTH } from './Constants';
-=======
-import { DRAWER_WIDTH } from './constants';
->>>>>>> 1490295c39874ea60924c370f84298fbfe05e850
+import Constants from './constants';
+import sizes from '../Components/sizes';
+const DRAWER_WIDTH = Constants.DRAWER_WIDTH;
 
 const styles = makeStyles((theme) => ({
    root: {
@@ -16,7 +14,6 @@ const styles = makeStyles((theme) => ({
       }),
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: '60px',
    },
    appBarShift: {
       width: `calc(100% - ${DRAWER_WIDTH}px)`,
@@ -40,6 +37,17 @@ const styles = makeStyles((theme) => ({
       alignItems: 'center',
       '& .MuiFormControl-root': {
          width: '100%',
+      },
+      [sizes.down('xs')]: {
+         '& h6': {
+            display: 'none',
+         },
+         '& svg': {
+            display: 'none',
+         },
+         '& span': {
+            fontSize: '0.6rem',
+         },
       },
    },
    testDivSavePalette: {

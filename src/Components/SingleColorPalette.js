@@ -4,19 +4,24 @@ import { Link } from 'react-router-dom';
 import ColorBox from './ColorBox';
 import NavBar from './Navbar';
 import Footer from './Footer';
-import styles from './styles/PaletteStyles';
+import styles from '../styles/PaletteStyles';
 
 class SingleColorPalette extends Component {
    constructor(props) {
       super(props);
       this.state = { format: 'hex' };
-      this._shades = this.generateShades(this.props.palette, this.props.colorid);
+      this._shades = this.generateShades(
+         this.props.palette,
+         this.props.colorid
+      );
    }
    generateShades(palette, colorToFilterby) {
       let shades = [];
       let allColors = palette.colors;
       for (let key in allColors) {
-         shades = shades.concat(allColors[key].filter((color) => color.id === colorToFilterby));
+         shades = shades.concat(
+            allColors[key].filter((color) => color.id === colorToFilterby)
+         );
       }
       return shades.slice(1);
    }
@@ -26,7 +31,12 @@ class SingleColorPalette extends Component {
 
    render() {
       const colorBox = this._shades.map((color) => (
-         <ColorBox key={color.name} background={color[this.state.format]} name={color.name} showingFullPalette={false} />
+         <ColorBox
+            key={color.name}
+            background={color[this.state.format]}
+            name={color.name}
+            showingFullPalette={false}
+         />
       ));
       const { paletteName, emoji, id } = this.props.palette;
       const { classes } = this.props;

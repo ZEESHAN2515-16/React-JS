@@ -1,10 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
-import chroma from 'chroma-js';
 
+import sizes from '../Components/sizes';
+import chroma from 'chroma-js';
 export default {
    colorBox: {
       width: '20%',
-      // height: '25%',
       height: (props) => (props.showingFullPalette ? '25%' : '50.05%'),
       display: 'inline-block',
       margin: '0 auto',
@@ -13,16 +13,28 @@ export default {
       marginBottom: '-3.99px',
       '&:hover button': {
          opacity: '1',
-         transition: '0.5s',
-         cursor: 'pointer',
+         transition: '0.3s all ease',
+      },
+
+      [sizes.down('lg')]: {
+         width: '20%',
+         height: (props) => (props.showingFullPalette ? '25%' : '50.05%'),
+      },
+      [sizes.down('md')]: {
+         width: '50%',
+         height: (props) => (props.showingFullPalette ? '10%' : '20%'),
+      },
+      [sizes.down('xs')]: {
+         width: '100%',
+         height: (props) => (props.showingFullPalette ? '10%' : '10%'),
       },
    },
    boxContent: {
-      bottom: '0',
       position: 'absolute',
+      width: '100%',
       padding: '10px',
-      left: ' 0px',
-      width: '90%',
+      bottom: '0',
+      left: ' 0',
       fontSize: '12px',
       textTransform: ' uppercase',
       letterSpacing: '1px',
@@ -53,6 +65,8 @@ export default {
       textTransform: 'uppercase',
       lineHeight: '30px',
       textAlign: 'center',
+      outline: 'none',
+      cursor: 'pointer',
    },
    copyButton: {
       backgroundColor: (props) =>
@@ -82,16 +96,15 @@ export default {
    },
    copyOverlay: {
       opacity: '0',
-      zIndex: '-99',
+      zIndex: '0',
       width: '100%',
-      height: '100vh',
+      height: '100%',
       transition: 'transform 0.6s ease-in-out',
       transform: 'scale(0.1)',
    },
    showOverlay: {
       opacity: '1',
-      height: '100vh',
-      transform: 'scale(10)',
+      transform: 'scale(50)',
       zIndex: 10,
       position: 'absolute',
    },
@@ -104,11 +117,11 @@ export default {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      flexDirection: 'column',
       fontSize: '2rem',
       transform: 'scale(0.1)',
       opacity: '0',
       color: 'white',
-      flexDirection: 'column',
    },
    showMsg: {
       transform: ' scale(1)',
@@ -123,13 +136,16 @@ export default {
             chroma(props.background).luminance() >= 0.5
                ? 'rgba(0, 0, 0, 0.1)'
                : 'rgba(255, 255, 255, 0.3)',
-         // background: 'rgba(255, 255, 255, 0.3)',
          verticalAlign: 'middle',
          marginBottom: '0',
          fontWeight: '400',
          textTransform: 'uppercase',
          textShadow: '1px 2px black',
          padding: '0.4rem',
+         [sizes.down('xs')]: {
+            fontSize: '3rem',
+            width: '100vw',
+         },
       },
       '& p': {
          marginTop: '0',
