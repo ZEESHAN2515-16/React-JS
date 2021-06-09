@@ -1,3 +1,1 @@
-const DRAWER_WIDTH = 350;
-const HEADER_HEIGHT = 64;
-export default { DRAWER_WIDTH, HEADER_HEIGHT };
+export const DRAWER_WIDTH = 350;
