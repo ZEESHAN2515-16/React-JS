@@ -19,7 +19,7 @@ export default {
       justifyContent: 'center',
       backgroundImage: `url(${bg})`,
       position: 'fixed',
-      overflow: 'scroll',
+      overflowY: 'auto',
    },
    container: {
       width: '50%',
