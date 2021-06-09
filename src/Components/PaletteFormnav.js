@@ -8,7 +8,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/LibraryAdd';
 import Button from '@material-ui/core/Button';
-import Drawer from '@material-ui/icons/LibraryAdd';
+// import Drawer from '@material-ui/icons/LibraryAdd';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import PaletteMetaForm from './PaletteMetaForm';
 import styles from '../styles/PaletteFormNavStyles';

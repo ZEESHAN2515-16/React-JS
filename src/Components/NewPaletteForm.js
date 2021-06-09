@@ -14,7 +14,7 @@ import { arrayMove } from 'react-sortable-hoc';
 import ColorPickerForm from './ColorPickerForm';
 import PaletteNav from './PaletteFormnav';
 import styles from '../styles/NewPaletteFormStyles';
-import uniq from 'underscore/modules/uniq';
+// import uniq from 'underscore/modules/uniq';
 
 function NewPaletteForm(props) {
    const maxColors = 20;
