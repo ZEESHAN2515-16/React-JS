@@ -48,6 +48,7 @@ function PaletteMetaForm(props) {
          emoji: mys.native,
       };
       handleSubmit(newPalette);
+      setStageName('');
    };
 
    return (
