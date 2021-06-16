@@ -14,6 +14,7 @@ import { arrayMove } from 'react-sortable-hoc';
 import ColorPickerForm from './ColorPickerForm';
 import PaletteNav from './PaletteFormnav';
 import styles from '../styles/NewPaletteFormStyles';
+import seedColors from '../seedColors';
 // import uniq from 'underscore/modules/uniq';
 
 function NewPaletteForm(props) {
@@ -21,7 +22,7 @@ function NewPaletteForm(props) {
    const { palettes } = props;
    const classes = styles();
    const [open, setOpen] = useState(false);
-   const [colors, handleAddColor] = useState(palettes[0].colors);
+   const [colors, handleAddColor] = useState(seedColors[0].colors);
    const paletteFull = colors.length >= maxColors;
    const handleDrawerOpen = () => {
       setOpen(true);

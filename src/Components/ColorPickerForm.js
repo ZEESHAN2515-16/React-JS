@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Button from '@material-ui/core/Button';
+import chroma from 'chroma-js';
 import { ChromePicker } from 'react-color';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { withStyles } from '@material-ui/styles';
@@ -31,8 +32,7 @@ function ColorPickerForm(props) {
       ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
          let isUnique = true;
          colors.forEach((color) => {
-            if (color.name.toLowerCase() === value.toLowerCase())
-               isUnique = false;
+            if (color.name.toLowerCase() === value.toLowerCase()) isUnique = false;
          });
          // if (colors.length !== 0)
          //    console.log(colors.every((name) => name.toString().toLowerCase() !== value.toString().toLowerCase()));
@@ -50,11 +50,7 @@ function ColorPickerForm(props) {
 
    return (
       <div className={classes.root}>
-         <ChromePicker
-            color={selectColor}
-            onChange={updateColor}
-            className={classes.colorPicker}
-         />
+         <ChromePicker color={selectColor} onChange={updateColor} className={classes.colorPicker} />
          <ValidatorForm onSubmit={addColor}>
             <TextValidator
                value={newColorName}
@@ -64,11 +60,7 @@ function ColorPickerForm(props) {
                variant='filled'
                margin='normal'
                validators={['required', 'isColorNameUnique', 'isColorUnique']}
-               errorMessages={[
-                  'Color Name is required',
-                  'Color name must be Unique',
-                  'Color must be unique',
-               ]}
+               errorMessages={['Color Name is required', 'Color name must be Unique', 'Color must be unique']}
             />
             <Button
                variant='contained'
@@ -77,6 +69,7 @@ function ColorPickerForm(props) {
                startIcon={<AddCircleOutlineIcon />}
                style={{
                   backgroundColor: paletteFull ? 'lightgrey' : selectColor,
+                  color: chroma(selectColor).luminance() >= 0.3 ? 'black' : 'white',
                }}
                type='submit'
                disabled={paletteFull}>
