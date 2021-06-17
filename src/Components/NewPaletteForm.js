@@ -23,6 +23,7 @@ function NewPaletteForm(props) {
    const classes = styles();
    const [open, setOpen] = useState(false);
    const [colors, handleAddColor] = useState(seedColors[0].colors);
+   const allColors = palettes.map((palette) => palette.colors).flat();
    const paletteFull = colors.length >= maxColors;
    const handleDrawerOpen = () => {
       setOpen(true);
@@ -43,9 +44,18 @@ function NewPaletteForm(props) {
       handleAddColor([]);
    };
    const randomColor = () => {
-      const allColors = palettes.map((palette) => palette.colors).flat();
-      const rand = Math.floor(Math.random() * allColors.length);
-      handleAddColor([...colors, allColors[rand]]);
+      let isDuplicateColor = true;
+      let rand, randomColor;
+
+      rand = Math.floor(Math.random() * allColors.length);
+      randomColor = allColors[rand];
+
+      while (isDuplicateColor) {
+         rand = Math.floor(Math.random() * allColors.length);
+         randomColor = allColors[rand];
+         isDuplicateColor = colors.some((color) => color.name === randomColor.name);
+      }
+      handleAddColor([...colors, randomColor]);
    };
    const handleSavePalette = (palette) => {
       const { paletteName, emoji } = palette;

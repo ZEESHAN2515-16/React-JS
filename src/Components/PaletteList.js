@@ -15,6 +15,7 @@ import Avatar from '@material-ui/core/Avatar';
 import styles from '../styles/PaletteListStyles';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
+import AddPaletteIcon from '@material-ui/icons/NoteAdd';
 
 class PaletteList extends Component {
    constructor(props) {
@@ -50,7 +51,10 @@ class PaletteList extends Component {
             <div className={classes.container}>
                <nav className={classes.nav}>
                   <h2>React Color</h2>
-                  <Link to='/palette/new'>Create Palette</Link>
+                  <Link to='/palette/new'>
+                     Create Palette
+                     <AddPaletteIcon />
+                  </Link>
                </nav>
 
                <TransitionGroup className={classes.palettes}>

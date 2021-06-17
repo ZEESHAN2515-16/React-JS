@@ -44,9 +44,21 @@ export default {
       flexDirection: 'row',
       color: 'white',
       '& a': {
+         minWidth: '150px',
          color: 'white',
-         textDecoration: 'underline',
+         textDecoration: 'none',
          marginRight: '5px',
+         fontWeight: '400',
+         fontSize: '1.2rem',
+      },
+      '& svg': {
+         position: 'absolute',
+         marginLeft: '8px',
+      },
+      [sizes.down('xs')]: {
+         // gridTemplateColumns: 'repeat(2, 48%)',
+         flexDirection: 'column',
+         marginBottom: '25px',
       },
    },
    palettes: {
