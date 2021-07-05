@@ -29,10 +29,10 @@ function App() {
    };
 
    const deletePalette = (paletteId) => {
-      console.log('Delete Palette');
+     
       let newPalette = palettes.filter((palette) => palette.id !== paletteId);
       saveNewPals(newPalette);
-      console.log(palettes);
+    
    };
 
    return (
