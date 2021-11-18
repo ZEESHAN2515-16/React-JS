@@ -7,7 +7,7 @@ export default {
       padding: '0.5rem',
       border: '1px solid black',
       position: 'relative',
-      overflow: 'hidden',
+//       overflow: 'hidden',
       cursor: 'pointer',
       '&:hover svg': {
          opacity: '1',
